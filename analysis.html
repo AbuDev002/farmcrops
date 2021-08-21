@@ -1,0 +1,163 @@
+<!doctype html>
+  <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" href="images/fav.jpg">
+    <title>Crops Analyzer App</title>
+    <style>
+    canvas {
+      margin: auto;
+      background: #ececec;
+      width: 100%;
+    }
+
+    .btn-disabled {
+      color: #fff !important;
+    }
+    #upload-file {
+      display: none;
+    }
+    button{width: 100%;margin-bottom: 10px;}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Crops Analyzer App</a>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 m-auto">
+          <div class="custom-file mb-3">
+            <label for="upload-file">
+              <span class="btn btn-success">Analyze Crops Images</span>
+              <input type="file" accept="image/*" capture="environment" class="custom-file-input" id="upload-file">
+              <!-- <label for="upload-file" class="custom-file-label">Choose Image</label> -->
+            </label>
+          </div>
+          <canvas id="canvas"></canvas>
+
+          <h4 class="text-center my-3">Image Analysis</h4>
+
+          <div class="row my-4 text-center">
+
+            <div class="list-group">
+              <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                <div class="col-md-3">
+                  <div class="btn-group">
+                    <button type="button" class="filter-btn brightness-remove btn btn-info">-</button>
+                    <button type="button" class="btn btn-secondary btn-disabled" disabled>Brightness</button>
+                    <button type="button" class="filter-btn brightness-add btn btn-info">+</button>
+                  </div>
+
+                </div>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action">
+                <div class="col-md-3">
+                  <div class="btn-group">
+                    <button type="button" class="filter-btn contrast-remove btn btn-info">-</button>
+                    <button type="button" class="btn btn-secondary btn-disabled" disabled>Contrast</button>
+                    <button type="button" class="filter-btn contrast-add btn btn-info">+</button>
+                  </div>
+                </div>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action">
+               <div class="col-md-3">
+                <div class="btn-group">
+                  <button class="filter-btn saturation-remove btn btn-info">-</button>
+                  <button class="btn btn-secondary btn-disabled" disabled>Saturation</button>
+                  <button class="filter-btn saturation-add btn btn-info">+</button>
+                </div>
+              </div>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">
+             <div class="col-md-3">
+              <div class="btn-group">
+                <button class="filter-btn vibrance-remove btn btn-info">-</button>
+                <button class="btn btn-secondary btn-disabled" disabled>Vibrance</button>
+                <button class="filter-btn vibrance-add btn btn-info">+</button>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+     
+      <h4 class="text-center my-3">Crops Diseases</h4>
+
+      <div class="row mb-3">
+        <div class="col-md-3">
+          <button class="filter-btn vintage-add btn btn-dark btn-block">
+            Target spot
+          </button>
+        </div>
+        <div class="col-md-3">
+          <button class="filter-btn lomo-add btn btn-dark btn-block">
+            Gummy stem blight
+          </button>
+        </div>
+        <div class="col-md-3">
+          <button class="filter-btn clarity-add btn btn-dark btn-block">
+            Alternaria leaf spot
+          </button>
+        </div>
+        <div class="col-md-3">
+          <button class="filter-btn sincity-add btn btn-dark btn-block">
+            Leaf blight
+          </button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <button class="filter-btn crossprocess-add btn btn-dark btn-block">
+            Ring spot
+          </button>
+        </div>
+        <div class="col-md-3">
+          <button class="filter-btn pinhole-add btn btn-dark btn-block">
+            Black leg
+          </button>
+        </div>
+        <div class="col-md-3">
+          <button class="filter-btn nostalgia-add btn btn-dark btn-block">
+            Septoria spot
+          </button>
+        </div>
+        <div class="col-md-3">
+          <button class="filter-btn hermajesty-add btn btn-dark btn-block">
+            Cercospora leaf spot
+          </button>
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-md-6">
+          <button id="download-btn" class="btn btn-primary btn-block">Download Image</button>
+        </div>
+        <div class="col-md-6">
+          <button id="revert-btn" class="btn btn-danger btn-block">Remove Analyzed Filters</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+<!-- imports the webpage's javascript file -->
+<script src="js/caman.js" defer></script>
+<script src="js/imganalysis.js" defer></script>
+
+</body>
+</html>
